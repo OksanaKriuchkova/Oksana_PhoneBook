@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import java.util.Random;
 
 public class RegistrationTests extends TestBase{
-
     @BeforeMethod
     public void preCondition() {
 
@@ -37,7 +36,7 @@ public class RegistrationTests extends TestBase{
     @Test(description = "Bug  report N23467 Fixed")
     public void registrationWrongEmail(){
 
-        User user = new User().withEmail("dongmail.com").withPassword("Don12345$");
+        User user = new User().withEmail("dongmail.com").withPassword("Dona12345$");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
@@ -55,7 +54,7 @@ public class RegistrationTests extends TestBase{
     @Test
     public void registrationWrongPassword(){
 
-        User user = new User().withEmail("don@gmail.com").withPassword("Don12");
+        User user = new User().withEmail("dona@gmail.com").withPassword("Don12");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
@@ -73,7 +72,7 @@ public class RegistrationTests extends TestBase{
     @Test
     public void registrationNeValidPasswordExistUser(){
 
-        User user = new User().withEmail("don@gmail.com").withPassword("Don12");
+        User user = new User().withEmail("dona@gmail.com").withPassword("Don12");
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
@@ -103,3 +102,5 @@ public class RegistrationTests extends TestBase{
     }
 
 }
+
+

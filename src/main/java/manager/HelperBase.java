@@ -31,4 +31,6 @@ public class HelperBase {
         List<WebElement> list = wd.findElements(locator);
         return list.size()>0;
     }
+
+
 }
