@@ -7,13 +7,13 @@ import org.testng.annotations.BeforeSuite;
 public class TestBase {
 
     static ApplicationManager app = new ApplicationManager();
- @BeforeSuite
+
+    @BeforeSuite
     public void setUp(){
         app.init();
     }
- @AfterSuite
+    @AfterSuite
     public void tearDown(){
-
-     //app.stop();
+        //app.stop();
     }
 }
