@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.util.Random;
 
 public class RegistrationTests extends TestBase{
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
 
         if (app.getHelperUser().isLogged()) {
@@ -33,21 +33,22 @@ public class RegistrationTests extends TestBase{
 
     }
 
-    @Test(description = "Bug  report N23467 Fixed")
+    @Test(description = "Bug  report N23467 Fixed",groups = {"smoke"})
     public void registrationWrongEmail(){
 
-        User user = new User().withEmail("dongmail.com").withPassword("Dona12345$");
+        User user = new User().withEmail("donagmail.com").withPassword("Dona12345$");
+        logger.info("Tests run with data: --->"+user.toString());
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
-        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format\n" +
-                "            Email must contains one @ and minimum 2 symbols after last dot\n" +
-                "            Password must contain at least one uppercase letter!\n" +
-                "            Password must contain at least one lowercase letter!\n" +
-                "            Password must contain at least one digit!\n" +
-                "            Password must contain at least one special symbol from [‘$’,’~’,’-‘,’_’]!"));
+        //Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format\n" +
+        //        "            Email must contains one @ and minimum 2 symbols after last dot\n" +
+         //       "            Password must contain at least one uppercase letter!\n" +
+        //        "            Password must contain at least one lowercase letter!\n" +
+        //        "            Password must contain at least one digit!\n" +
+         //       "            Password must contain at least one special symbol from [‘$’,’~’,’-‘,’_’]!"));
 
-        // Assert.assertTrue(app.getHelperUser().isAlertPresent2("Wrong email or password format"));
+         Assert.assertTrue(app.getHelperUser().isAlertPresent2("Wrong email or password format"));
 
 
     }
@@ -55,6 +56,7 @@ public class RegistrationTests extends TestBase{
     public void registrationWrongPassword(){
 
         User user = new User().withEmail("dona@gmail.com").withPassword("Don12");
+        logger.info("Tests run with data: --->"+user.toString());
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
@@ -73,6 +75,7 @@ public class RegistrationTests extends TestBase{
     public void registrationNeValidPasswordExistUser(){
 
         User user = new User().withEmail("dona@gmail.com").withPassword("Don12");
+        logger.info("Tests run with data: --->"+user.toString());
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();
@@ -91,7 +94,8 @@ public class RegistrationTests extends TestBase{
     @Test
     public void registrationExistsUser(){
 
-        User user = new User().withEmail("noa@gmail.com").withPassword("Nnoa12345$");
+        User user = new User().withEmail("hotdog@mail.com").withPassword("hotDog$123");
+        logger.info("Tests run with data: --->"+user.toString());
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitRegistration();

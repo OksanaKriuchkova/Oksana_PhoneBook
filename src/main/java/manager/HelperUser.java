@@ -35,6 +35,7 @@ public class HelperUser extends HelperBase{
 //        passwordInput.clear();
 //        passwordInput.sendKeys(password);
         type(By.xpath("//input[last()]"),password);
+       // type(By.xpath("//input[la]"),password);
 
     }
 
@@ -54,27 +55,9 @@ public class HelperUser extends HelperBase{
     }
 
     public void logout(){
-        click(By.xpath("//button[text()='Sign Out']"));
+        click(By.xpath("(//button[normalize-space()='Sign Out'])[1]"));
     }
 
-    public boolean isAlertPresent(String message) {
-        WebDriverWait wait = new WebDriverWait(wd, Duration.ofSeconds(5));
-
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        System.out.println(alert.getText());
-        if(alert != null && alert.getText().equals(message)){
-
-            // click ok
-            // pause
-            alert.accept();
-            // click cancel  --->  alert.dismiss();
-            // type into alert      -->alert.sendKeys("hello");
-
-
-            return true;
-        }
-        return false;
-    }
     public boolean isAlertPresent2(String message) {
         WebDriverWait wait = new WebDriverWait(wd, Duration.ofSeconds(5));
 
